@@ -1,0 +1,20 @@
+{
+    "name": "kesar/katas",
+    "description": "Collection of katas to improve dev skills",
+    "keywords": [ "katas", "coding", "development", "php" ],
+    "homepage": "https://github.com/kesar/katas/",
+    "license": [
+        "GPL-2.0+",
+        "LGPL-3.0"
+    ],
+    "version": "1.0",
+    "require": {
+        "php": ">5.3.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "autoload": {
+        "psr-4": {"Katas": "Katas/"}
+    }
+}

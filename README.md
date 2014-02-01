@@ -1,4 +1,4 @@
 katas
 =====
 
-collection of katas
+collection of katas to improve software dev skills
