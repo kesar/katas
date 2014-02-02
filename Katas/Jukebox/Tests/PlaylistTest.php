@@ -25,6 +25,11 @@ class PlaylistTest extends \PHPUnit_Framework_TestCase
         $this->playlist->addSong($song);
     }
 
+    public function testGetNextSong()
+    {
+
+    }
+
     protected function tearDown()
     {
         $this->playlist = null;

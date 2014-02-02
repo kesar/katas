@@ -2,9 +2,10 @@
 
 namespace Katas\Jukebox;
 
+use Katas\Jukebox\PlaylistSort\PlaylistSortableInterface;
+
 class Jukebox
 {
-    private $songs = array();
     /**
      * @var Playlist
      */
@@ -17,7 +18,20 @@ class Jukebox
 
     public function addSong(Song $song)
     {
-        $this->songs[] = $song;
         $this->playlist->addSong($song);
+    }
+
+    public function playNext()
+    {
+        $song = $this->playlist->getNextSong();
+        $song->play();
+        $this->playlist->increaseCurrentSongIndex();
+    }
+
+    public function sort(PlaylistSortableInterface $sortBy)
+    {
+        $songs = $this->playlist->getSongs();
+        $songs = $sortBy->sort($songs);
+        $this->playlist->setSongs($songs);
     }
 }

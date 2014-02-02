@@ -21,7 +21,9 @@ class SongTest extends \PHPUnit_Framework_TestCase
 
     public function testPlaySong()
     {
+        $this->assertFalse($this->song->isPlayed());
         $this->song->play();
+        $this->assertTrue($this->song->isPlayed());
     }
 
     protected function tearDown()

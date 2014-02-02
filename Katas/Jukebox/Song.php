@@ -10,4 +10,10 @@ class Song
     {
         $this->played = true;
     }
+
+    public function isPlayed()
+    {
+        return $this->played;
+    }
+
 }
