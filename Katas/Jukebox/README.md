@@ -23,7 +23,7 @@ Test doubles gave several types:
 
 For this exercise you'll use mock objects and stubs. Both can be injected to the tested class as collaborators.
 
-#1 Stub
+## Stub
 
 A stub is a "fake object" that gives "pre-programmed" answers for method calls, mimicking the behavior of an actual (original) class.
 
@@ -52,7 +52,7 @@ echo $random_mock->getRandomNumber();
 echo $random_mock->getRandomNumber();
 ```
 
-#2 Mock object
+## Mock object
 
 Mock objects are similar to stubs in a way that they can mimic the behavior of a collaborator. On the other hand they are also used to verify delegation. It means that you can program an expected method call to a mock and if that is not done, the test fails. You shouldn't use mocks unless you want to test delegation. Ideally you can max one mock object in one single test execution.
 
