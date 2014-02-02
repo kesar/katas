@@ -18,4 +18,14 @@ class SongTest extends \PHPUnit_Framework_TestCase
     {
         $song = new Song();
     }
+
+    public function testPlaySong()
+    {
+        $this->song->play();
+    }
+
+    protected function tearDown()
+    {
+        $this->song = null;
+    }
 }

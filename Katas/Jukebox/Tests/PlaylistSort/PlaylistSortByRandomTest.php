@@ -18,4 +18,9 @@ class PlaylistSortByRandomTest extends \PHPUnit_Framework_TestCase
     {
         $playlist = new PlaylistSortByRandom();
     }
+
+    protected function tearDown()
+    {
+        $this->playlistSortByRandom = null;
+    }
 }

@@ -18,4 +18,15 @@ class PlaylistTest extends \PHPUnit_Framework_TestCase
     {
         $playlist = new Playlist();
     }
+
+    public function addSong()
+    {
+        $song = $this->getMock('Katas\Jukebox\Song');
+        $this->playlist->addSong($song);
+    }
+
+    protected function tearDown()
+    {
+        $this->playlist = null;
+    }
 }
