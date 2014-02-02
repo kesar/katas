@@ -16,7 +16,7 @@ class PlaylistTest extends \PHPUnit_Framework_TestCase
 
     public function testConstruct()
     {
-        $playlist = new Playlist();
+        $this->assertInstanceOf('Katas\Jukebox\Playlist', new Playlist());
     }
 
     public function addSong()

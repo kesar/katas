@@ -16,7 +16,7 @@ class PlaylistSortByRandomTest extends \PHPUnit_Framework_TestCase
 
     public function testConstruct()
     {
-        $playlist = new PlaylistSortByRandom();
+        $this->assertInstanceOf('Katas\Jukebox\PlaylistSort\PlaylistSortByRandom', new PlaylistSortByRandom());
     }
 
     protected function tearDown()

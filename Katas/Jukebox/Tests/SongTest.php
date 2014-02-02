@@ -16,7 +16,7 @@ class SongTest extends \PHPUnit_Framework_TestCase
 
     public function testConstruct()
     {
-        $song = new Song();
+        $this->assertInstanceOf('Katas\Jukebox\Song', new Song());
     }
 
     public function testPlaySong()

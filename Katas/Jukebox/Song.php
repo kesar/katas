@@ -4,8 +4,10 @@ namespace Katas\Jukebox;
 
 class Song
 {
+    private $played = false;
+
     public function play()
     {
-        return true;
+        $this->played = true;
     }
 }
