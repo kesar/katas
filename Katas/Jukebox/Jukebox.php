@@ -2,7 +2,9 @@
 
 namespace Katas\Jukebox;
 
+use Katas\Jukebox\Exceptions\UnableToFindNextSongException;
 use Katas\Jukebox\PlaylistSort\PlaylistSortableInterface;
+use Katas\Jukebox\PlaylistSort\PlaylistSortByRandom;
 
 class Jukebox
 {
@@ -21,11 +23,20 @@ class Jukebox
         $this->playlist->addSong($song);
     }
 
-    public function playNext()
+    public function playNext($firstTime = true)
     {
-        $song = $this->playlist->getNextSong();
+        try {
+            $song = $this->playlist->getNextSong();
+        } catch (UnableToFindNextSongException $ex) {
+            if ($firstTime === true) {
+                $this->sort(new PlaylistSortByRandom());
+                $this->playNext(false);
+            }
+            return false;
+        }
         $song->play();
         $this->playlist->increaseCurrentSongIndex();
+        return true;
     }
 
     public function sort(PlaylistSortableInterface $sortBy)
@@ -33,5 +44,6 @@ class Jukebox
         $songs = $this->playlist->getSongs();
         $songs = $sortBy->sort($songs);
         $this->playlist->setSongs($songs);
+        $this->playlist->resetCurrentSongIndex();
     }
 }

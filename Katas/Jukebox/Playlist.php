@@ -19,6 +19,16 @@ class Playlist
         $this->currentSong++;
     }
 
+    public function getCurrentSongIndex()
+    {
+        return $this->currentSong;
+    }
+
+    public function resetCurrentSongIndex()
+    {
+        $this->currentSong = 0;
+    }
+
     /**
      * @throws Exceptions\UnableToFindNextSongException
      * @return Song
