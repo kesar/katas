@@ -19,9 +19,7 @@ class CompactDiscToXmlTest extends \PHPUnit_Framework_TestCase
         $compactDiscMock = $this->getMock(
             'Katas\CD\CompactDisc',
             array('getTitle', 'getBand', 'getTrackList'),
-            array(),
-            '',
-            false
+            array('titleCD', 'bandCD')
         );
         $compactDiscMock->expects($this->once())->method('getTitle')->will($this->returnValue('titleCD'));
         $compactDiscMock->expects($this->once())->method('getBand')->will($this->returnValue('bandCD'));
@@ -29,7 +27,7 @@ class CompactDiscToXmlTest extends \PHPUnit_Framework_TestCase
 
         $formatResult = $this->compactDiscToXml->format($compactDiscMock);
         $this->assertStringStartsWith(
-            '<?xml version="1.0"?>'."\n".'<root><titleCD>title</titleCD><bandCD>band</bandCD></root>',
+            '<?xml version="1.0"?>' . "\n" . '<root><titleCD>title</titleCD><bandCD>band</bandCD></root>',
             $formatResult
         );
     }

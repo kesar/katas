@@ -19,9 +19,7 @@ class CompactDiscToJsonTest extends \PHPUnit_Framework_TestCase
         $compactDiscMock = $this->getMock(
             'Katas\CD\CompactDisc',
             array('getTitle', 'getBand', 'getTrackList'),
-            array(),
-            '',
-            false
+            array('titleCD', 'bandCD')
         );
         $compactDiscMock->expects($this->once())->method('getTitle')->will($this->returnValue('titleCD'));
         $compactDiscMock->expects($this->once())->method('getBand')->will($this->returnValue('bandCD'));
@@ -36,4 +34,3 @@ class CompactDiscToJsonTest extends \PHPUnit_Framework_TestCase
         $this->compactDiscToJson = null;
     }
 }
-
