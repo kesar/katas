@@ -2,9 +2,9 @@
 
 namespace Katas\CD\CompactDiscFormats;
 
-use Katas\CD\CompactDisc;
+use Katas\CD\CompactDiscAbstract;
 
 interface CompactDiscToFormatInterface
 {
-    public function format(CompactDisc $compactDisc);
+    public function format(CompactDiscAbstract $compactDisc);
 }

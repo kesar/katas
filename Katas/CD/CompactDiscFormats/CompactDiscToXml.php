@@ -2,12 +2,12 @@
 
 namespace Katas\CD\CompactDiscFormats;
 
-use Katas\CD\CompactDisc;
+use Katas\CD\CompactDiscAbstract;
 
 class CompactDiscToXml implements CompactDiscToFormatInterface
 {
 
-    public function format(CompactDisc $compactDisc)
+    public function format(CompactDiscAbstract $compactDisc)
     {
         $compactDiscArray = array(
             'title' => $compactDisc->getTitle(),
