@@ -8,14 +8,11 @@ php:
 matrix:
     allow_failures:
         - php: hhvm
-    include:
-        - php: 5.4
-          script:
-            - wget https://scrutinizer-ci.com/ocular.phar
-            - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
-
 
 before_script: composer --no-dev install
 
-script:
-  - phpunit --configuration phpunit.xml.dist --coverage-clover=coverage.clover
+script: phpunit --configuration phpunit.xml.dist --coverage-clover=coverage.clover
+
+after_success:
+    - wget https://scrutinizer-ci.com/ocular.phar
+    - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
