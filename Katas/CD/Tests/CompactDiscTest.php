@@ -57,6 +57,24 @@ class CompactDiscTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(is_string($this->compactDisc->getInfo($compactDiscToJsonMock)));
     }
 
+    public function testBuyCompactDisc()
+    {
+        $this->assertTrue($this->compactDisc->buy());
+    }
+
+    public function testAttachObserverToCompactDisc()
+    {
+        $observerMock = $this->getMock('Katas\CD\Notifications\ObserverInterface', array('update'));
+        $this->compactDisc->attachObserver('purchased', $observerMock);
+        $this->assertEquals(1, count($this->compactDisc->getObservers('purchased')));
+    }
+
+    public function testNotifyObserversOfCompactDisc()
+    {
+        $this->testAttachObserverToCompactDisc();
+        $this->compactDisc->notifyObserver('purchased');
+    }
+
     protected function tearDown()
     {
         $this->compactDisc = null;

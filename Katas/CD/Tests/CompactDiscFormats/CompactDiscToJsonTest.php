@@ -16,13 +16,24 @@ class CompactDiscToJsonTest extends \PHPUnit_Framework_TestCase
 
     public function testFormatToJson()
     {
-        $compactDiscMock = $this->getMock('Kata\CD\CompactDisc', array('getTitle', 'getBand', 'getTrackList'));
-        $compactDiscMock->expects($this->any())->method('getTitle')->will($this->returnValue('titleCD'));
-        $compactDiscMock->expects($this->any())->method('getBand')->will($this->returnValue('bandCD'));
-        $compactDiscMock->expects($this->any())->method('getTrackList')->will($this->returnValue(array()));
+        $compactDiscMock = $this->getMock(
+            'Katas\CD\CompactDisc',
+            array('getTitle', 'getBand', 'getTrackList'),
+            array(),
+            '',
+            false
+        );
+        $compactDiscMock->expects($this->once())->method('getTitle')->will($this->returnValue('titleCD'));
+        $compactDiscMock->expects($this->once())->method('getBand')->will($this->returnValue('bandCD'));
+        $compactDiscMock->expects($this->once())->method('getTrackList')->will($this->returnValue(array()));
 
         $formatResult = $this->compactDiscToJson->format($compactDiscMock);
+        $this->assertStringStartsWith('{"title":"titleCD","band":"bandCD"', $formatResult);
+    }
 
+    protected function tearDown()
+    {
+        $this->compactDiscToJson = null;
     }
 }
 

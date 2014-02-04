@@ -6,6 +6,8 @@ use Katas\CD\CompactDiscFormats\CompactDiscToFormatInterface;
 
 class CompactDisc
 {
+    use Traits\ObservableTrait;
+
     private $title;
     private $band;
     private $trackList = array();
@@ -15,6 +17,12 @@ class CompactDisc
         $this->setTitle($title);
         $this->setBand($band);
         $this->setTrackList($trackList);
+    }
+
+    public function buy()
+    {
+        $this->notifyObserver('purchased');
+        return true;
     }
 
     /**
