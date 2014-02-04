@@ -26,10 +26,8 @@ class CompactDiscToXmlTest extends \PHPUnit_Framework_TestCase
         $compactDiscMock->expects($this->once())->method('getTrackList')->will($this->returnValue(array()));
 
         $formatResult = $this->compactDiscToXml->format($compactDiscMock);
-        $this->assertStringStartsWith(
-            '<?xml version="1.0"?>' . "\n" . '<root><titleCD>title</titleCD><bandCD>band</bandCD></root>',
-            $formatResult
-        );
+        $formatToXml = simplexml_load_string($formatResult);
+        $this->assertNotEquals(false, $formatToXml);
     }
 
     protected function tearDown()
