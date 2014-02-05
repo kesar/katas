@@ -12,6 +12,13 @@ abstract class CompactDiscAbstract
     private $band;
     private $trackList = array();
 
+    public function __construct($title = '', $band = '', $trackList = array())
+    {
+        $this->setTitle($title);
+        $this->setBand($band);
+        $this->setTrackList($trackList);
+    }
+
     public function buy()
     {
         $this->notifyObserver('purchased');
